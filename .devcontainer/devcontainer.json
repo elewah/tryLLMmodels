@@ -1,10 +1,13 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/universal
 {
-	"name": "Default Linux Universal",
+	"name": "Default Linux Universal for SensorsConnect Chatbot",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/universal:2-linux"
-
+	// "image": "mcr.microsoft.com/devcontainers/universal:2-linux"
+	"build": {
+        // Path is relative to the devcontainer.json file.
+        "dockerfile": "Dockerfile"
+    },
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 
@@ -12,7 +15,16 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "uname -a",
+	"postCreateCommand": "pip install -r requirements.txt",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"mechatroner.rainbow-csv",
+				"ms-python.python",
+				"ms-toolsai.jupyter"
+			]
+		}
+	}
 
 	// Configure tool-specific properties.
 	// "customizations": {},
