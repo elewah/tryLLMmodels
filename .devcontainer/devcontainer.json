@@ -15,13 +15,14 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pip install -r requirements.txt",
+	"postCreateCommand": "pip install -r requirements.txt && python loadingModelSolar10-7B.py",
 	"customizations": {
 		"vscode": {
 			"extensions": [
 				"mechatroner.rainbow-csv",
 				"ms-python.python",
-				"ms-toolsai.jupyter"
+				"ms-toolsai.jupyter",
+				"ms-azuretools.vscode-docker"
 			]
 		}
 	}
