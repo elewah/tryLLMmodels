@@ -15,7 +15,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pip install -r requirements.txt && python loadingModelSolar10-7B.py",
+	// "postCreateCommand": "pip install -r requirements.txt && python loadingModelSolar10-7B.py",
 	"customizations": {
 		"vscode": {
 			"extensions": [

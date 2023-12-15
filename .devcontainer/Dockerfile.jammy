@@ -12,7 +12,7 @@ RUN apt-get update && \
 	apt-get remove --yes --purge --autoremove equivs && \
 	rm -rf /var/lib/apt/lists/*
 
-# Setup Lambda repositoryx
+# Setup Lambda repository
 ADD lambda.gpg .
 RUN apt-get update && \
     apt-get install apt-utils &&\ 
@@ -36,6 +36,11 @@ RUN apt-get update && \
 		lambda-server && \
 	rm -rf /var/lib/apt/lists/*
 
+ADD requirements.txt .
+RUN pip install -r requirements.txt  
+
+ADD loadingModelSolar10-7B.py .
+RUN python3 loadingModelSolar10-7B.py  
 # Setup for nvidia-docker
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
