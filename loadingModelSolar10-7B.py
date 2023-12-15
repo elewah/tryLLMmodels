@@ -16,8 +16,9 @@ prompt = tokenizer.apply_chat_template(conversation, tokenize=False, add_generat
 inputs = tokenizer(prompt, return_tensors="pt").to(model.device) 
 model.generation_config.max_length = 10
 # outputs = model.generate(**inputs, use_cache=True, max_length=4096)
-outputs = model.generate(**inputs, max_length=100, num_return_sequences=1)
-output_text = tokenizer.decode(outputs[0]) 
-print(output_text)
+for i in range(5):
+    outputs = model.generate(**inputs, max_length=100, num_return_sequences=1)
+    output_text = tokenizer.decode(outputs[0]) 
+    print(output_text)
 
 
