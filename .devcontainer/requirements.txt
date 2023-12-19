@@ -2,5 +2,6 @@ transformers==4.35.2
 accelerate
 bitsandbytes
 scipy
+wikipedia
 #conda install cudatoolkit
 #python version 3.11.5
