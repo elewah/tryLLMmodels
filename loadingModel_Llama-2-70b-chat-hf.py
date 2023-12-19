@@ -4,11 +4,11 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 import time
 from huggingface_hub import login
 import os
-# os.environ["OPENAI_API_KEY"]= =
 from dotenv import load_dotenv
 load_dotenv()
-Huggingface_token= os.getenv("Huggingface_token")
+Huggingface_token= os.getenv("HuggingfaceToken")
 login(Huggingface_token)
+
 # login("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")
 
 # tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat")
@@ -23,7 +23,7 @@ login(Huggingface_token)
 model_id="meta-llama/Llama-2-70b-chat-hf"
 
 tokenizer = AutoTokenizer.from_pretrained(model_id)
-import torch
+
 model =AutoModelForCausalLM.from_pretrained(model_id, load_in_8bit=True, device_map='auto', torch_dtype=torch.float16)
 
 conversation = [ {'role': 'user', 'content': 'please fix the grammer in this line "my name is machiel he have book"'} ] 

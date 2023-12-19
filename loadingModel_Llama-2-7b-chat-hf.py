@@ -5,10 +5,10 @@ import time
 from huggingface_hub import login
 import os
 from dotenv import load_dotenv
+from dotenv import load_dotenv
 load_dotenv()
-Huggingface_token= os.getenv("Huggingface_token")
+Huggingface_token= os.getenv("HuggingfaceToken")
 login(Huggingface_token)
-# login("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")
 
 # tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat")
 # model = AutoModelForCausalLM.from_pretrained(
@@ -22,7 +22,7 @@ login(Huggingface_token)
 model_id="meta-llama/Llama-2-7b-chat-hf"
 
 tokenizer = AutoTokenizer.from_pretrained(model_id)
-import torch
+
 model =AutoModelForCausalLM.from_pretrained(model_id, load_in_8bit=True, device_map='auto', torch_dtype=torch.float16)
 
 conversation = [ {'role': 'user', 'content': 'please fix the grammer in this line "my name is machiel he have book"'} ] 
