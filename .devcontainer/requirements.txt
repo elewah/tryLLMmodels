@@ -3,5 +3,6 @@ accelerate
 bitsandbytes
 scipy
 wikipedia
+google-search-results
 #conda install cudatoolkit
 #python version 3.11.5
