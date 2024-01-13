@@ -14,6 +14,7 @@
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
+	"runArgs": ["--gpus","all"],
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "pip install -r requirements.txt && python loadingModelSolar10-7B.py",
 	"customizations": {
