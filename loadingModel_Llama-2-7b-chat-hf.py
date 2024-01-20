@@ -24,8 +24,23 @@ model_id="meta-llama/Llama-2-7b-chat-hf"
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 
 model =AutoModelForCausalLM.from_pretrained(model_id, load_in_8bit=True, device_map='auto', torch_dtype=torch.float16)
+promptTemplate="""
+Act as an assistant, generate a like-human response and recommend a service, giving the recommended service details in this JSON object below as input.
+{
+    "Service Name": "supercoffee",
+    "Service Address": "1148 Weston Rd, York, ON M6N 3S3, Canada",
+    "Rate": 4.6,
+    "Occupancy": 1,
+    "Estimated Travel Time": 145.29,
+    "Estimated Overall Service Time": 445.28999999999996
+}
+Do not include any explanations.
+Provide a RFC8259 compliant JSON response following this format without deviation.
+{"answer": "your like-human response"}
+"""
 
-conversation = [ {'role': 'user', 'content': 'please fix the grammer in this line "my name is machiel he have book"'} ] 
+conversation = [ {'role': 'user', 'content': promptTemplate} ] 
+
 
 prompt = tokenizer.apply_chat_template(conversation, tokenize=False, add_generation_prompt=True)
 
@@ -36,7 +51,7 @@ iteration_times = []
 # outputs = model.generate(**inputs, use_cache=True, max_length=4096)
 for i in range(5):
     start_time = time.time()
-    outputs = model.generate(**inputs, max_length=100, num_return_sequences=1)
+    outputs = model.generate(**inputs, max_length=250, num_return_sequences=1)
     output_text = tokenizer.decode(outputs[0]) 
     end_time = time.time()
     iteration_time = end_time - start_time
